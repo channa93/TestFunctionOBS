@@ -2,83 +2,234 @@
 <html>
 <head>
 	<title>Test Function OBS</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<style type="text/css">
+		pre {
+		    overflow-x: auto;
+		    background-color: #e2c7ea;
+		}
+		pre code {
+		    overflow-wrap: normal;
+		    white-space: pre;
+		    font-weight: bold;
+		}
+		.row {
+		    margin-left: -20px;
+		    *zoom: 1;
+		    margin-top: 30px;
+		}
+
+		#block_response{
+			background-color: #ec971f;
+		}
+		/*.dropdown-toggle {   
+		    overflow: hidden;
+		    padding-right: 24px 
+		    text-align: left;
+		    text-overflow: ellipsis;    
+		    width: 100%;
+		}
+
+		
+		.dropdown-toggle .caret {
+		    position: absolute;
+		    right: 12px;
+		    top: calc(50% - 2px);
+		}*/
+
+		.dropdown-menu > li > a:hover {
+		    background-color: #449d44;
+		    background-image: none;
+		}
+
+
+	</style>
 </head>
-<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-<body >
+<body ng-app="myApp" ng-controller="myCtrl">
+<!-- <body > -->
 	<div class="container">
+
+		<!-- *************row1    Header -->
+
 		<div class="row">
-			<div class="col-md-4">
-				<button class="btn btn-success controller">Controller</button>
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<nav class="navbar navbar-dark nav-bar-fixed-top bg-primary">
+				    <h1 class="navbar-brand">Welcome to Web-Service test function page!</h1>
+				</nav>	
 			</div>
-			<div class="col-md-4">
-				<button class="btn btn-info">Function</button>
-			</div>
-			<div class="col-md-4">
-				<button class="btn btn-warning">Method type</button>
-			</div>	
 		</div>
-		<div class="row">
-			<div class="col-md-4">
-				<div class="btn-group">
-				  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="ctrl-name">
-				    Product <span class="caret"></span>
+
+
+		<!-- *************row2    Controller, Function, Method combo list -->
+		<div class="row" >
+			<div class="col-md-4 col-sm-4 col-xs-4">
+				<!--<select class="form-control" id="ctrl-name">
+				    <option value="one" ng-repeat="data in controllers" class="ctrl" ng-click="selectCtrl(data.controller)">{{data.controller}}</option>
+				</select> -->
+				<div class="btn-group" style="width:75%; position:relative;">
+				  <button type="button" class="btn btn-default dropdown-toggle text-left" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="ctrl-name" style="position:absolute;width:inherit;">
+				    {{ctrl}} <span class="caret"></span>
 				  </button>
 				  <ul class="dropdown-menu" >
-				    <li><a href="#" class="ctrl">Product</a></li>
-				    <li><a href="#" class="ctrl">Profile</a></li>
-				    <li><a href="#" class="ctrl">Category</a></li>
-				    <li><a href="#" class="ctrl">Bidroom</a></li>
+				    <li ng-repeat="data in controllers"><a href="#" class="ctrl" ng-click="selectCtrl(data.controller)">{{data.controller}}</a></li>
 				  </ul>
-				</div>
+				</div> 
 			</div>
-			<div class="col-md-4">
-				<div class="btn-group">
+			<div class="col-md-4 col-sm-4 col-xs-4" >
+				<div class="btn-group" style="width:75%; position:relative;">
 				  <button type="button" class="btn btn-default dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="function-name" >
-				    get_product_by_id <span class="caret"></span>
+				    {{func}} <span class="caret"></span>
 				  </button>
 				  <ul class="dropdown-menu function-list">
-				    <li><a href="#">get_user_products</a></li>
-				    <li><a href="#">get_product_by_bidroom_id</a></li>
+				    <li><a href="#" class="function" ng-repeat="data in functions" ng-click="selectFunction(data.action)">{{data.action}}</a></li>
 				    
 				  </ul>
 				</div>
 			</div>
-			<div class="col-md-4">
+			<!--  <div class="col-md-4 col-sm-4 col-xs-4">
 				<div class="btn-group">
-				  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				  <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				    POST <span class="caret"></span>
 				  </button>
 				  <ul class="dropdown-menu">
-				    <li><a href="#">POST</a></li>
-				    <li><a href="#">GET</a></li>
+				    <li><a href="#">{{method}}</a></li>
 				    
 				  </ul>
 				</div>
-			</div>	
+			</div>	  -->
 		</div>
 
-		<!-- <div class="row">
-			<div class="col-md-4">
-				<select>
-					<option>Product</option>
-					<option>Profile</option>
-					<option>Bidroom</option>
-				</select>
+
+		<!-- *************row3    URL path show -->
+		<div class="row">
+		   <div class="col-lg-12">
+		    <div class="input-group input-group-lg">
+		      <input type="text" class="form-control " id="url-box" placeholder="URL path here ...">
+		      <span class="input-group-btn">
+		        <button class="btn btn-warning btn-lg" type="submit">{{method}}</button>
+		      </span>
+		    </div>
+		  </div>
+		</div>
+
+		
+		<!-- *************row4   param form and response dispaly block-->
+
+		<div class="row">
+			<!-- form param block -->
+			<div class="col-md-6 col-sm-6 col-xs-6">			
+				<form class="form-horizontal" role="form" id="form-param">
+				  <div class="form-group" ng-repeat="param in params">
+				    <label class="control-label col-sm-2 col-xs-2 name{{param.status}}" >{{param.name}}:</label>
+				    <div class="col-sm-10 col-xs-10">
+				      <input type="{{param.type}}" class="form-control type{{param.status}}" placeholder="{{param.type}}" name="{{param.name}}" >
+				    </div>
+				  </div>
+
+				  <button class="btn btn-success " type="submit" style="float: left; margin-right: 10px"  id="submit" >Submit</button> 
+				  <button class="btn btn-warning " type="reset" >Reset</button>
+				</form>
 			</div>
-			<div class="col-md-4">
-				<button class="btn btn-info">Function</button>
-			</div>
-			<div class="col-md-4">
-				<button class="btn btn-warning">Method type</button>
-			</div>	
-		</div> -->
-	</div>
+			<!-- response block-->
+			<div class="col-md-6 col-sm-6 col-xs-6">
+<!-- 				<div class="title_result" style="position: relative;float: right; width: 50%; height: auto;">
+ -->				<div class="title_result" style="position: relative;float: right; width: 100%; height:auto;"> Reponse
+				    <div id="block_response" class="well well-sm pre-scrollable ">
+				       <pre>
+				       	<code id="response"> 
+				       	
+{
+    "code": 1,
+    "data": {
+        "userName": "Chea Dararaksmey",
+        "displayName": "Titi tom"
+        "firstName": "Titi",
+        "lastName": "tom",
+        "accessKey": "NTZkZWVmYzk3ZjhiOWFiNjA4OGI0NTY3MjAxNi0wMy0wOCAyMjowMzoxMyBQTU9ubGluZV9CaWRkaW5nX1N5c3RlbQ==",
+        "sex": "",
+        "avatar": "http://192.168.1.146/obs/upload/img/profiles/821628821457616064Screenshot_10.png",
+        "emails": [],
+        "phones": [],
+        "contactInfo": {
+            "address": "toul kork",
+            "website": "www.mysite.com",
+            "companyName": null
+        },
+        "userId": "56deefc97f8b9ab6088b4567"
+    },
+    "message": {
+        "code": 1,
+        "description": "success"
+    }
+} -->
+				       	</code>
+				       </pre>
+				    </div>
+
+				</div>
+			</div> <!-- end of div class="col-md-6" -->
+			
+		</div>  
+
+		
+
+	</div>  <!-- end of div container -->
+
+
+
+	 
+
+
+		
+		
 
 
 
 
-<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/my-script.js"></script>
+<script  src="js/jquery-1.9.1.min.js"></script>
+<script  src="js/bootstrap.min.js"></script>
+<!--
+	<script type="text/javascript">
+		$(function(){
+			$.ajax({
+			    beforeSend: function (xhr) {
+			        xhr.setRequestHeader('Authorization', 'Basic ' + btoa('admin:1234'));//btoa('user:pass'))
+			    },
+			    url: "http://192.168.1.244/obs/api/profile",
+			    type: 'get',
+			    //data: {socialId:response.id, socialType:'1', displayName:response.name},
+			    dataType: "json",
+			    success: function (data) {
+			    	console.log(data);
+			    },
+			    error: function (error) {
+			    	console.log(error);
+			    }
+			});
+		});
+	</script>
+	-->
+<script  src="js/my-script.js"></script>
+<script  src="js/angular.min.js"></script> 
+<script  src="js/myapp.js"></script> 
+
+
+<!--
+<script type="text/javascript">
+	var app = angular.module('myApp', []);
+	app.controller('myCtrl', function($scope, $http) {
+		$http.get("http://192.168.1.244/obs/api/profile", 
+			{
+				headers: {
+    				'Authorization': 'Basic '+btoa('admin:1234') //js use btoa('user:password')  or php use = base64encode() YWRtaW46MTIzNA==
+    			}
+    		}) 
+		    .then(function(response) {
+		        console.log(response.data);
+		});
+	});
+</script>
+-->
+
 </body>
 </html>
