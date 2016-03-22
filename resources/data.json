@@ -1,0 +1,9 @@
+{
+ 	"code": 1,
+ 	"msg":"success",
+ 	"data":[
+ 		"get_user_products",
+ 		"get_product_by_id",
+ 		"get_product_by_bidroom_id"
+ 	]
+}
