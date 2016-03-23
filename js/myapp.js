@@ -40,13 +40,14 @@ app.controller('myCtrl', function($scope, $http) {
 
 		// manipulate request object
 		$http(req).then(function(response){
+
 			if(response.data['code']==1){
 				$scope.functions = response.data.data;
 				var func = response.data.data[0].action;
 				console.log($scope.functions);
 				$scope.selectFunction(func);  // after list select the first function by default
 			}else{
-				alert(response.data['message']);
+				alert(response.data['description']);
 			}
 			
 		}, function(error){
@@ -55,6 +56,7 @@ app.controller('myCtrl', function($scope, $http) {
 	} 
 
 	$scope.selectFunction = function(funcName){
+
 		$scope.func = funcName;   
 		console.log("select function: "+funcName);
 		$('#function-name').html(funcName+caret);
@@ -84,7 +86,7 @@ app.controller('myCtrl', function($scope, $http) {
 				$scope.method = response.data.data[0].method;
 				$scope.params = response.data.data[0].params;
 			}else{
-				alert(response.data['message']);
+				alert(response.data['description']);
 			}
 			
 		}, function(error){
@@ -110,6 +112,7 @@ app.controller('myCtrl', function($scope, $http) {
 			},
 			data: obj
 		}
+
 		// process request
 		$http(req).then(function(response){	
 	        if(response.data['code']==1){
@@ -120,6 +123,7 @@ app.controller('myCtrl', function($scope, $http) {
 	        	$('#response').html(this.response);
 	        	alert(response.data['message']['description']);
 	        }  
+
 		}, function(error){
 			console.log(error);
 		});
