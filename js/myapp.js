@@ -13,10 +13,12 @@ var url_info_func = "http://192.168.1.244/obs/admin/testFunction/TestFunction/ge
 var app = angular.module('myApp', []);
 var caret = ' <span class="caret"></span>';
 var response="";
+	// used to suffix the param type for radio button
+var nthParam=1;
 
 
-app.controller('myCtrl', function($scope, $http) {
-	
+
+app.controller('myCtrl', function($scope, $http, $compile) {
 		
 	showDefaultCtrlFunc();
 	// triger function when a controller is selected in combo
@@ -94,7 +96,7 @@ app.controller('myCtrl', function($scope, $http) {
 		});
 	}
 
-	// handle submit button with jQuery and request data with AngularJS
+	// handle submit button with jQuery and request data with AngularJS (submit form to get data back from server)
 	$('#form-param').submit(function(e){
 		// e.preventDefault();
 		var form_data = $(this).serializeArray();
@@ -146,6 +148,25 @@ app.controller('myCtrl', function($scope, $http) {
 	    return obj;
 	}
 
+	$scope.addParam = function() {	
+		nthParam+=1; // increment number of param. later use when add new row with radio type spcify name
+		var param_input = '<tr class="param-tbl-row">'+
+		        	         '<td>'+     	          
+		        	         	'<input type="text" class="form-control" name="params" placeholder="parameter name ...">'+
+		        	         '</td> '+   
+		        	        '<td>'+       
+		        	        	'<label class="radio-inline"><input type="radio" value="text" name="type-param'+nthParam+'">text</label>' +
+		        	        	'<label class="radio-inline"><input type="radio" value="file" name="type-param'+nthParam+'">file</label>' + 	
+		        	        '</td>'+
+		        	        '<td>'+
+		        	        	'<button type="button" class="btn btn-warning btn-remove-param" onclick="removeParam(this)" aria-label="Left Align" ><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>'+
+		        	        '</td>' +     				       
+		        	      '</tr>';
+		$(param_input).appendTo('#param-tbl-body');//$('#param-tbl-body').append(param_input);
+		console.log(nthParam,param_input);
+	}
+	
+
 	function showDefaultCtrlFunc() {
 		// default controller and function when open index.html
 		$scope.method = "Method";
@@ -177,7 +198,24 @@ app.controller('myCtrl', function($scope, $http) {
 		});
 			
 	}
+
+	$('#form-add-function').submit(function(e) {
+
+		alert('submit form add new function');
+		var form_data = $(this).serializeArray();
+		var obj = convert_to_js_object(form_data);
+		console.log(obj);
+
+		params = obj.params;
+		
+
+	});
 	
 });
+
+// js functoin to remove row of param when onlick event is fired.  onclick="removeParam(this)"
+function removeParam (element) {
+	$(element).closest('tr').remove ();
+}
 
 
