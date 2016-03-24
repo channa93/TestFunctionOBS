@@ -66,8 +66,8 @@
 				<!--<select class="form-control" id="ctrl-name">
 				    <option value="one" ng-repeat="data in controllers" class="ctrl" ng-click="selectCtrl(data.controller)">{{data.controller}}</option>
 				</select> -->
-				<div class="btn-group" style="width:75%; position:relative;">
-				  <button type="button" class="btn btn-default dropdown-toggle text-left" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="ctrl-name" style="position:absolute;width:inherit;">
+				<div class="btn-group" style="width:75%; ">
+				  <button type="button" class="btn btn-default dropdown-toggle text-left" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="ctrl-name" style="width:inherit;">
 				    {{ctrl}} <span class="caret"></span>
 				  </button>
 				  <ul class="dropdown-menu" >
@@ -177,59 +177,15 @@
 
 
 
-	 
-
-
-		
-		
-
-
-
 
 <script  src="js/jquery-1.9.1.min.js"></script>
 <script  src="js/bootstrap.min.js"></script>
-<!--
-	<script type="text/javascript">
-		$(function(){
-			$.ajax({
-			    beforeSend: function (xhr) {
-			        xhr.setRequestHeader('Authorization', 'Basic ' + btoa('admin:1234'));//btoa('user:pass'))
-			    },
-			    url: "http://192.168.1.244/obs/api/profile",
-			    type: 'get',
-			    //data: {socialId:response.id, socialType:'1', displayName:response.name},
-			    dataType: "json",
-			    success: function (data) {
-			    	console.log(data);
-			    },
-			    error: function (error) {
-			    	console.log(error);
-			    }
-			});
-		});
-	</script>
-	-->
 <script  src="js/my-script.js"></script>
-<script  src="js/angular.min.js"></script> 
+<script  src="js/angular.min.js"></script>
+<script  src="js/utils.js"></script> 
 <script  src="js/myapp.js"></script> 
+ 
 
-
-<!--
-<script type="text/javascript">
-	var app = angular.module('myApp', []);
-	app.controller('myCtrl', function($scope, $http) {
-		$http.get("http://192.168.1.244/obs/api/profile", 
-			{
-				headers: {
-    				'Authorization': 'Basic '+btoa('admin:1234') //js use btoa('user:password')  or php use = base64encode() YWRtaW46MTIzNA==
-    			}
-    		}) 
-		    .then(function(response) {
-		        console.log(response.data);
-		});
-	});
-</script>
--->
 
 </body>
 </html>

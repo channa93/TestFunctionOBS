@@ -1,45 +1,37 @@
-$(document).ready(function() {
-	function http_request_ajax(obj) {
+	var headers ={
+		'Authorization': 'Basic '+btoa('admin:1234') //js use btoa('user:password')  or php use = base64encode() YWRtaW46MTIzNA==
+	};
+
+	function http_request_ajax(obj, callbackSuccess , callbackError) {
+		
 		$.ajax( {
 			  url: obj.url,
 			  method: obj.method,
-			  headers: {
-			  	'Authorization': 'Basic '+btoa('admin:1234') //js use btoa('user:password')  or php use = base64encode() YWRtaW46MTIzNA==
-			  },
-			  data: data,
+			  data: obj.data,
+			  headers: headers,
 			  processData: false,
 			  contentType: false,
-			  success: function (response) {	  	
-			  	return response;
-			  },
-			  error: function (error) {
-			  	console.log(error);
-			  	alert(error);
-			  	return error;
-			  }
+			  success: callbackSuccess,
+			  error: callbackError
 		});
-		e.preventDefault();
+		
 	}
 
-	function http_request_angular(obj){
+	// patter for later use with $http shorthand of angularjs 
+	function getObjRequest(url, method, data) {
 
-		// create object request
-		var request ={
-			method: obj.method,
-			url: obj.url,
-			headers: {
-				'Authorization': 'Basic '+btoa('admin:1234') //js use btoa('user:password')  or php use = base64encode() YWRtaW46MTIzNA==
-			}
+		return {
+			url: url,
+			method:method,
+			data: data,
+			headers: headers,
+			processData: false,
+			contentType: false
 		}
-
-		//process request
-		$http({request}).then(function(response) {
-			return response;
-		}, function(error){
-			console.log(error);
-			alert(error);
-			return error;
-		});
+		
 	}
-});
+
+
+
+
 

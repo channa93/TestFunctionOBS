@@ -42,12 +42,10 @@ app.controller('myCtrl', function($scope, $http, $compile) {
 
 		// manipulate request object
 		$http(req).then(function(response){
-
+			console.log('Caller $scope.listFunction: ',response);
 			if(response.data['code']==1){
 				$scope.functions = response.data.data;
-				var func = response.data.data[0].action;
-				console.log($scope.functions);
-				$scope.selectFunction(func);  // after list select the first function by default
+				$scope.selectFunction(response.data.data[0].action);  // after list select the first function by default
 			}else{
 				alert(response.data['description']);
 			}
@@ -58,11 +56,10 @@ app.controller('myCtrl', function($scope, $http, $compile) {
 	} 
 
 	$scope.selectFunction = function(funcName){
-
-		$scope.func = funcName;   
 		console.log("select function: "+funcName);
-		$('#function-name').html(funcName+caret);
+		$scope.func = funcName;   
 		$scope.url = url+$scope.ctrl+"/"+$scope.func;
+		$('#function-name').html(funcName+caret);
 		$('#url-box').val($scope.url);
 
 		$scope.showMethodNParamForm(funcName);
@@ -70,17 +67,12 @@ app.controller('myCtrl', function($scope, $http, $compile) {
 
 	$scope.showMethodNParamForm = function(funcName) {
 		console.log("show param form for function: "+funcName);
-		// request object
-		var req = {
-			method: 'POST',
-			url: url_info_func,
-			headers: {
-				'Authorization': 'Basic '+btoa('admin:1234') //js use btoa('user:password')  or php use = base64encode() YWRtaW46MTIzNA==
-			},
-			data: { funcName: funcName }
-		};
-
-		// manipulate request object
+		
+			/** request data to to get list of controllers using Angular*/
+		// create request object from pattern in utils.js
+		var req = getObjRequest(url_info_func, 'POST', {funcName: funcName}); // getObjRequest(url, method, data)
+		
+		// process request object
 		$http(req).then(function(response){
 			if(response.data['code']==1){
 				console.log(response);
@@ -98,7 +90,6 @@ app.controller('myCtrl', function($scope, $http, $compile) {
 
 	// handle submit button with jQuery and request data with AngularJS (submit form to get data back from server)
 	$('#form-param').submit(function(e){
-		
 		 // Using ajax to post data to server cus it works well with file upload
 		$.ajax( {
 			  url: $scope.url,
@@ -109,16 +100,10 @@ app.controller('myCtrl', function($scope, $http, $compile) {
 			  data: new FormData( this ),
 			  processData: false,
 			  contentType: false,
-			  success: function (response) {	  	
-			  	if(response['code']==1){ 
-			  		this.response = JSON.stringify(response, null,3);
-			  		$('#response').html(this.response);  //output response
-			  	}else{ // alert if fail
-			  		this.response = JSON.stringify(response, null,3);
-			  		$('#response').html(this.response);  //output response
-			  		alert(response.message['description']);
-			  	}
-			  	console.log(response);
+			  success: function (response) {
+			   	console.log(response);	
+			  	$('#response').html(JSON.stringify(response, null,3));  //output response  	
+			  	if(response['code']==0)	alert(response.message['description']);	  	
 			  },
 			  error: function (error) {
 			  	this.response = JSON.stringify(response, null,3);
@@ -173,35 +158,22 @@ app.controller('myCtrl', function($scope, $http, $compile) {
 		$scope.func = "login";    // current selected function scope variable
 
 			/** request data to to get list of controllers using Angular*/
-		// create request object
-		var req = {
-			method: 'GET',
-			url: url_ctrls,
-			headers: {
-				'Authorization': 'Basic '+btoa('admin:1234') //js use btoa('user:password')  or php use = base64encode() YWRtaW46MTIzNA==
-			}
-		}
+		// create object request pattern
+		var req = getObjRequest(url_ctrls, 'GET');
+		
 		// process request
-		$http(req).then(function(response){
-			
-			if(response.data['code']==1){
-				$scope.controllers = response.data.data; 
-		    	this.response = JSON.stringify(response, null,3); // (data,replacer,space)
-		        $('#response').html(this.response);
-		        $scope.listFunction($scope.ctrl);
-			}else{
-				$scope.controllers = response.data.data; 
-		    	this.response = JSON.stringify(response, null,3); // (data,replacer,space)
-		        $('#response').html(this.response);
-		        $scope.listFunction($scope.ctrl);
-				alert(this.response.message['description']);
-			}
+		$http(req).then(function(response){	
+			  // convert to string and display to repsone block
+	        $('#response').html(JSON.stringify(response, null,3)); // JSON.stringify(data,replacer,space)
+			$scope.controllers = response.data.data; 
+	        $scope.listFunction($scope.ctrl);
+			if(response.data['code']==0)  alert(response.data.message['description']);
 
 		}, function(error){
 			console.log(error);
-		});
-			
+		});		
 	}
+
 
 	$('#form-add-function').submit(function(e) {
 
