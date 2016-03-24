@@ -98,37 +98,36 @@ app.controller('myCtrl', function($scope, $http, $compile) {
 
 	// handle submit button with jQuery and request data with AngularJS (submit form to get data back from server)
 	$('#form-param').submit(function(e){
-		// e.preventDefault();
-		var form_data = $(this).serializeArray();
-		var obj = convert_to_js_object(form_data);
-		//var obj = new FormData($(this)[0]);
-		console.log("Convert form param to js object: ",obj);
-		console.log("Request url: "+$scope.url);
-
-		// request object
-		var req = {
-			method: $scope.method,
-			url: $scope.url,
-			headers: {
-				'Authorization': 'Basic '+btoa('admin:1234') //js use btoa('user:password')  or php use = base64encode() YWRtaW46MTIzNA==
-			},
-			data: obj
-		}
-
-		// process request
-		$http(req).then(function(response){	
-	        if(response.data['code']==1){
-	        	this.response = JSON.stringify(response.data, null,3); // (data,replacer,space)
-	        	$('#response').html(this.response);	
-	        }else{       	
-	        	this.response = JSON.stringify(response.data, null,3); // (data,replacer,space)
-	        	$('#response').html(this.response);
-	        	alert(response.data['message']['description']);
-	        }  
-
-		}, function(error){
-			console.log(error);
-		});
+		
+		 // Using ajax to post data to server cus it works well with file upload
+		$.ajax( {
+			  url: $scope.url,
+			  method: $scope.method,
+			  headers: {
+			  	'Authorization': 'Basic '+btoa('admin:1234') //js use btoa('user:password')  or php use = base64encode() YWRtaW46MTIzNA==
+			  },
+			  data: new FormData( this ),
+			  processData: false,
+			  contentType: false,
+			  success: function (response) {	  	
+			  	if(response['code']==1){ 
+			  		this.response = JSON.stringify(response, null,3);
+			  		$('#response').html(this.response);  //output response
+			  	}else{ // alert if fail
+			  		this.response = JSON.stringify(response, null,3);
+			  		$('#response').html(this.response);  //output response
+			  		alert(response.message['description']);
+			  	}
+			  	console.log(response);
+			  },
+			  error: function (error) {
+			  	this.response = JSON.stringify(response, null,3);
+			  	$('#response').html(this.response);
+			  	console.log(error);
+			  }
+		} );
+		e.preventDefault();
+		
 	});
 
 	
@@ -173,7 +172,7 @@ app.controller('myCtrl', function($scope, $http, $compile) {
 		$scope.ctrl = "Profile";  // current selected controller scope variable
 		$scope.func = "login";    // current selected function scope variable
 
-			/** request data to to get list of controllers */
+			/** request data to to get list of controllers using Angular*/
 		// create request object
 		var req = {
 			method: 'GET',
@@ -184,13 +183,18 @@ app.controller('myCtrl', function($scope, $http, $compile) {
 		}
 		// process request
 		$http(req).then(function(response){
+			
 			if(response.data['code']==1){
 				$scope.controllers = response.data.data; 
-		    	this.response = JSON.stringify(response.data, null,3); // (data,replacer,space)
+		    	this.response = JSON.stringify(response, null,3); // (data,replacer,space)
 		        $('#response').html(this.response);
 		        $scope.listFunction($scope.ctrl);
 			}else{
-				alert(response.data['message']);
+				$scope.controllers = response.data.data; 
+		    	this.response = JSON.stringify(response, null,3); // (data,replacer,space)
+		        $('#response').html(this.response);
+		        $scope.listFunction($scope.ctrl);
+				alert(this.response.message['description']);
 			}
 
 		}, function(error){
@@ -208,7 +212,6 @@ app.controller('myCtrl', function($scope, $http, $compile) {
 
 		params = obj.params;
 		
-
 	});
 	
 });
