@@ -139,7 +139,7 @@ app.controller('myCtrl', function($scope, $http, $compile) {
 		        	         	'<input type="text" class="form-control" name="params" placeholder="parameter name ...">'+
 		        	         '</td> '+   
 		        	        '<td>'+       
-		        	        	'<label class="radio-inline"><input type="radio" value="text" name="type-param'+nthParam+'">text</label>' +
+		        	        	'<label class="radio-inline"><input type="radio" checked="checked" value="text" name="type-param'+nthParam+'">text</label>' +
 		        	        	'<label class="radio-inline"><input type="radio" value="file" name="type-param'+nthParam+'">file</label>' + 	
 		        	        '</td>'+
 		        	        '<td>'+
@@ -174,17 +174,60 @@ app.controller('myCtrl', function($scope, $http, $compile) {
 		});		
 	}
 
-
+	// handle form submit for add new function in admin page *******
 	$('#form-add-function').submit(function(e) {
-
+		// console.log(e);
 		alert('submit form add new function');
 		var form_data = $(this).serializeArray();
 		var obj = convert_to_js_object(form_data);
-		console.log(obj);
-
-		params = obj.params;
+		var data = _prepareDataAdminAddNewFunc(obj);
 		
+		var req = getObjRequest('http://192.168.1.244/obs/admin/testFunction/TestFunction/add_function', 'POST', data);
+		console.log(data,obj);
+
+		$http(req).then(function(response){
+			console.log(response);debugger;
+		},function(error){
+			console.log(error);
+		});
+
+
 	});
+
+	
+	function _prepareDataAdminAddNewFunc(obj) {
+		var dataPost ={
+			controller: obj.controller,
+			action: obj.action,
+			description: obj.description,
+			params: ''  // need to find
+		};
+		var nameParam = obj.params;
+		
+		  //Find param type by remove property from obj except param type
+		delete obj['controller'];
+		delete obj['action'];
+		delete obj['description'];
+		delete obj['params'];
+		var typeParam = obj;
+
+		// loop each key in typeParam object and create new params ,array of object, name and type as key 
+		var i=0;
+		var params=[];
+		for (var property in typeParam) {
+		    if (typeParam.hasOwnProperty(property)) {
+		        // console.log(nameParam[i++], typeParam[property] );
+		        params.push(
+		        	{
+		        		name: nameParam[i++],
+		        		type: typeParam[property]
+		        	}
+		        );
+		    }
+		}
+		dataPost['params'] = params;
+		return dataPost;
+	}
 	
 });
 
@@ -192,5 +235,6 @@ app.controller('myCtrl', function($scope, $http, $compile) {
 function removeParam (element) {
 	$(element).closest('tr').remove ();
 }
+
 
 

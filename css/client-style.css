@@ -1,0 +1,43 @@
+pre {
+    overflow-x: auto;
+    background-color: #e2c7ea;
+}
+pre code {
+    overflow-wrap: normal;
+    white-space: pre;
+    font-weight: bold;
+}
+.row {
+    margin-left: -20px;
+    *zoom: 1;
+    margin-top: 30px;
+}
+
+#block_response{
+	background-color: #ec971f;
+}
+/*.dropdown-toggle {   
+    overflow: hidden;
+    padding-right: 24px 
+    text-align: left;
+    text-overflow: ellipsis;    
+    width: 100%;
+}
+
+
+.dropdown-toggle .caret {
+    position: absolute;
+    right: 12px;
+    top: calc(50% - 2px);
+}*/
+
+.dropdown-menu > li > a:hover {
+    background-color: #449d44;
+    background-image: none;
+}
+
+
+
+div {
+	
+}
