@@ -5,36 +5,41 @@
 	    <div class="modal-content">
 	      	<div class="modal-header">
 		        <button type="button" class="close" data-dismiss="modal">&times;</button>
-		        <h4 class="modal-title">Add new function form</h4>
+		        <h4 class="modal-title">Edit function form</h4>
 	      	</div>
 	      	<div class="modal-body">
-		        <form class="form-horizontal" role="form" id="form-add-function">
+		        <form class="form-horizontal" role="form" id="form-edit-function">
+		        	<input type="hidden" name="id" value="{{dataEdit.id}}"> 
 		          	<div class="form-group">
 		                <label class="control-label col-sm-2" for="controller">Controller</label>
 		                <div class="col-sm-10">          
-		                  <input type="text" class="form-control" name="controller" placeholder="Enter controller name">
+		                  <input type="text" class="form-control" value="{{dataEdit.controller}}" name="controller" placeholder="Enter controller name">
 		                </div>
 	              	</div>
 	              	<div class="form-group">
 		                <label class="control-label col-sm-2" for="action">Function</label>
 		                <div class="col-sm-10">          
-		                  <input type="text" class="form-control" name="action" placeholder="Enter function name">
+		                  <input type="text" class="form-control" value="{{dataEdit.action}}" name="action" placeholder="Enter function name">
 		                </div>
 	              	</div>
 	              	<div class="form-group">
-		                <label class="control-label col-sm-2" for="description">Description</label>
+		                <label class="control-label col-sm-2"  for="description">Description</label>
 		                <div class="col-sm-10">  
-		                 <textarea class="form-control" rows="5" name="description" placeholder="Enter description "></textarea>        
+		                 <textarea class="form-control" rows="5" value="{{dataEdit.description}}" name="description" placeholder="Enter description ">{{dataEdit.description}}
+		                 </textarea>        
 		                  
 		                </div>
 	              	</div>
 	              	<div class="form-group" >
+	              		<!-- add param button -->
 			            <div>
-			                <button type="button" class="btn btn-success col-sm-3" aria-label="Left Align" ng-click="addParam()">
+			                <button type="button" class="btn btn-success col-sm-3" aria-label="Left Align" ng-click="addParam('inEditFunction')">
 			                	  	<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 			                	  	Add param
 			                </button>  
 			            </div><br><br>
+
+			            <!-- param form info -->
 		                <div>
 		                	<table class="table table-hover table-bordered" id="param-block-tbl">
 		                	    <thead>
@@ -44,14 +49,14 @@
 		                	        <th>Remove</th>
 		                	      </tr>
 		                	    </thead>
-		                	    <tbody id="param-tbl-body">
-		                	      <tr class="param-tbl-row">
+		                	    <tbody id="param-tbl-body-edit-function">
+		                	      <tr class="param-tbl-row" ng-repeat="param in dataEdit.params" >
 		                	         <td>     	          
-		                	         	<input type="text" class="form-control" name="params" placeholder="parameter name ...">
+		                	         	<input type="text" class="form-control" value="{{param.name}}"  name="params" placeholder="parameter name ...">
 		                	         </td>    
-		                	        <td>       
-		                	        	<label class="radio-inline"><input type="radio" value="text" checked="checked" name="type-param1">text</label>
-		                	        	<label class="radio-inline"><input type="radio" value="file" name="type-param1">file</label> 	
+		                	        <td>  
+		                	        	<label class="radio-inline"><input type="radio" value="text"  ng-checked="(param.type == 'text')" name="param-type{{$index}}">text</label> <!-- $index is the iteration variable -->
+		                	        	<label class="radio-inline"><input type="radio" value="file"  ng-checked="(param.type == 'file')" name="param-type{{$index}}">file</label> 	
 		                	        </td>
 		                	        <td>
 		                	        	<button type="button" class="btn btn-warning btn-remove-param" onclick="removeParam(this)" aria-label="Left Align" ><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>

@@ -30,7 +30,7 @@
 	              	</div>
 	              	<div class="form-group" >
 			            <div>
-			                <button type="button" class="btn btn-success col-sm-3" aria-label="Left Align" ng-click="addParam()">
+			                <button type="button" class="btn btn-success col-sm-3" aria-label="Left Align" ng-click="addParam('inAddFunction')">
 			                	  	<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 			                	  	Add param
 			                </button>  
@@ -44,7 +44,7 @@
 		                	        <th>Remove</th>
 		                	      </tr>
 		                	    </thead>
-		                	    <tbody id="param-tbl-body">
+		                	    <tbody id="param-tbl-body-add-function">
 		                	      <tr class="param-tbl-row">
 		                	         <td>     	          
 		                	         	<input type="text" class="form-control" name="params" placeholder="parameter name ...">

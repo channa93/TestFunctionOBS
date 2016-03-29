@@ -63,10 +63,10 @@
 							        </table>
 						        </td>
 						        <td>
-						        	Description
+						        	{{data.description}}
 						        </td>
 						        <td>
-						        	<button type="button" class="btn btn-success" aria-label="Left Align" ng-click="editFunction(data.id, data.controller)">
+						        	<button type="button" class="btn btn-success" aria-label="Left Align" ng-click="editFunction(data)">
 						        	  <span class="glyphicon  glyphicon-pencil" aria-hidden="true"></span> Edit
 						        	</button>
 						        	<button type="button" class="btn btn-warning" aria-label="Left Align" ng-click="removeFunction(data.id, data.controller)"> 
