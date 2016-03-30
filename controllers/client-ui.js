@@ -102,7 +102,7 @@ app.controller('clientController', function($scope, $http, $compile) {
 			  contentType: false,
 			  success: function (response) {
 			   	console.log(response);	
-			  	$('#response').html(JSON.stringify(response, null,3));  //output response  	
+			  	$('#response').jsonView(JSON.stringify(response, null,3));  //output response  	
 			  	if(response['code']==0)	alert(response.message['description']);	  	
 			  },
 			  error: function (error) {
@@ -129,7 +129,8 @@ app.controller('clientController', function($scope, $http, $compile) {
 		// process request
 		$http(req).then(function(response){	
 			  // convert to string and display to repsone block
-	        $('#response').html(JSON.stringify(response, null,3)); // JSON.stringify(data,replacer,space)
+	        // $('#response').html(JSON.stringify(response, null,3)); // JSON.stringify(data,replacer,space)
+	        $('#response').jsonView(JSON.stringify(response.data, null,3)); // JSON.stringify(data,replacer,space)
 			$scope.controllers = response.data.data; 
 	        $scope.listFunction($scope.ctrl);
 			if(response.data['code']==0)  alert(response.data.message['description']);
@@ -138,6 +139,33 @@ app.controller('clientController', function($scope, $http, $compile) {
 			console.log(error);
 		});		
 	}
+
+	// $('#response').jsonView(JSON.stringify(
+	//     {
+ //    	    "code": 1,
+ //    	    "data": {
+ //    	        "userName": "Chea Dararaksmey",
+ //    	        "displayName": "Titi tom",
+ //    	        "firstName": "Titi",
+ //    	        "lastName": "tom",
+ //    	        "accessKey": "NTZkZWVmYzk3ZjhiOWFiNjA4OGI0NTY3MjAxNi0wMy0wOCAyMjowMzoxMyBQTU9ubGluZV9CaWRkaW5nX1N5c3RlbQ==",
+ //    	        "sex": "",
+ //    	        "avatar": "http://192.168.1.146/obs/upload/img/profiles/821628821457616064Screenshot_10.png",
+ //    	        "emails": [],
+ //    	        "phones": [],
+ //    	        "contactInfo": {
+ //    	            "address": "toul kork",
+ //    	            "website": "www.mysite.com",
+ //    	            "companyName": null
+ //    	        },
+ //    	        "userId": "56deefc97f8b9ab6088b4567"
+ //    	    },
+ //    	    "message": {
+ //    	        "code": 1,
+ //    	        "description": "success"
+ //    	    }
+ //    	}
+	// ));
 	
 });
 

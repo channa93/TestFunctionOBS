@@ -80,45 +80,20 @@
 					</form>
 				</div>
 				<!-- response block-->
-				<div class="col-md-6 col-sm-6 col-xs-6">
+				<div class="col-md-6 col-sm-6 col-xs-6 ">
 	<!-- 				<div class="title_result" style="position: relative;float: right; width: 50%; height: auto;">
-	 -->				<div class="title_result" style="position: relative;float: right; width: 100%; height:auto;"> Reponse
-					    <div id="block_response" class="well well-sm pre-scrollable ">
-					       <pre>
-					       	<code id="response"> 
-					       	
-	{
-	    "code": 1,
-	    "data": {
-	        "userName": "Chea Dararaksmey",
-	        "displayName": "Titi tom"
-	        "firstName": "Titi",
-	        "lastName": "tom",
-	        "accessKey": "NTZkZWVmYzk3ZjhiOWFiNjA4OGI0NTY3MjAxNi0wMy0wOCAyMjowMzoxMyBQTU9ubGluZV9CaWRkaW5nX1N5c3RlbQ==",
-	        "sex": "",
-	        "avatar": "http://192.168.1.146/obs/upload/img/profiles/821628821457616064Screenshot_10.png",
-	        "emails": [],
-	        "phones": [],
-	        "contactInfo": {
-	            "address": "toul kork",
-	            "website": "www.mysite.com",
-	            "companyName": null
-	        },
-	        "userId": "56deefc97f8b9ab6088b4567"
-	    },
-	    "message": {
-	        "code": 1,
-	        "description": "success"
-	    }
-	} -->
-					       	</code>
-					       </pre>
-					    </div>
+	 -->				<div class="title_result" style="position: relative;float: right; width: 100%; height:auto;"> Reponse</div>
+						<div id="main-block-response">
+						    <div id="response" class="well well-sm pre-scrollable ">
+						       <!-- <pre>
+						       	<code id="response"> 
+						       	 
+						       	</code>
+						       </pre> -->
+						    </div>
+						</div>
 
-					</div>
 				</div> <!-- end of div class="col-md-6" -->
-				
-			</div>   <!-- end of row -->
-		</div> <!-- end of container body -->
-		
+			</div>  <!-- end of row -->
+					
 <?php include 'footer.php'; ?>

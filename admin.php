@@ -85,6 +85,5 @@
 
 				</div>	
 			</div> <!-- end of row -->
-		</div> <!-- end of container	 -->
 
 <?php include 'footer.php'; ?>
