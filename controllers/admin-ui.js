@@ -45,6 +45,12 @@ app.controller('adminController', function($scope, $http, $compile) {
 		// get data from form and prepare it for object request to server to get data
 		var form_data = $(this).serializeArray();
 		var obj = convert_to_js_object(form_data);
+			// check if params is string then convert to array so that later function,_prepareDataAdminEditFunc, work properly
+		if(typeof obj.params === 'string' ){ 
+			var tmpArray = [];
+			tmpArray[0] = obj.params;
+			obj.params = tmpArray;
+		}
 		var data = _prepareDataAdminAddNewFunc(obj);
 		var req = getObjRequest(URL_ADD_FUNC, 'POST', data);
 		
@@ -168,16 +174,22 @@ app.controller('adminController', function($scope, $http, $compile) {
 
 	$scope.editFunction = function(data) {
 		$scope.dataEdit = data;
-		$('#editFormModal').modal('toggle');
+		$('#editFormModal').modal({backdrop: "static"});
 	}
 
 	$('#form-edit-function').submit(function(e) {
-		alert('submit edit function');
+		// alert('submit edit function');
 		var form_data = $(this).serializeArray();
 		var obj = convert_to_js_object(form_data);
+			// check if params is string then convert to array so that later function,_prepareDataAdminEditFunc, work properly
+		if(typeof obj.params === 'string' ){ 
+			var tmpArray = [];
+			tmpArray[0] = obj.params;
+			obj.params = tmpArray;
+		}
+
 		var data = _prepareDataAdminEditFunc(obj);
 		var req = getObjRequest(URL_EDIT_FUNC, 'POST', data);
-
 		console.log('Data for request edit function: ',req);debugger;
 		$http(req).then(function(response){
 			console.log('Response after submit form edit:' ,response);
@@ -193,10 +205,9 @@ app.controller('adminController', function($scope, $http, $compile) {
 		});
 	});
 
-
 	// show default controller and list of functions
 	$scope.getListFunctions('Profile');
-	$scope.getListControllers();	
+	$scope.getListControllers();		
 	
 });
 
@@ -207,4 +218,3 @@ app.controller('adminController', function($scope, $http, $compile) {
 function removeParam (element) {
 	$(element).closest('tr').remove ();
 }
-

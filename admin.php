@@ -5,8 +5,12 @@
 			<div class="row">
 				<div class="col-md-12 col-sm-12 col-xs-12">
 					<nav class="navbar navbar-dark nav-bar-fixed-top bg-primary">
-					    <h1 class="navbar-brand">Welcome to admin page for OBS Web-Service test function page!</h1>
+					    <h1 class="navbar-brand">Welcome to admin for OBS web service!</h1>
 					</nav>	
+					<!-- Trigger the login modal with a button -->
+					 <button type="button" class="btn btn-default btn-md" id="btn-logout" style="position: relative;float: right;">
+					 	<span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> logout
+					 </button>
 				</div>
 			</div>
 
@@ -14,7 +18,7 @@
 			<div class="row" >
 				<div class="col-md-4 col-sm-4 col-xs-4">
 					<div class="btn-group" style="width:75%; ">
-					  <button type="button" class="btn btn-default dropdown-toggle text-left" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="ctrl-name" style="width:inherit;">
+					  <button type="button" class="btn btn-primary  dropdown-toggle text-left" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="ctrl-name" style="width:inherit;">
 					    {{ctrl}} <span class="caret"></span>
 					  </button>
 					  <ul class="dropdown-menu" >
@@ -26,7 +30,7 @@
 				<!-- add new function button and modal form pop up -->
 				<div class="col-md-4 col-sm-4 col-xs-4" >
 					<div class="btn-group" style="width:75%; ">
-					  <button type="button" class="btn btn-success" aria-label="Left Align" data-toggle="modal" data-target="#addFormModal">
+					  <button type="button" class="btn btn-success" aria-label="Left Align" data-toggle="modal" data-target="#addFormModal" data-backdrop="static">
 						  	<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 						  	New Function
 						</button>
@@ -40,9 +44,9 @@
 
 			<!-- *************row3     Function, table list -->
 			<div class="row" >
-				<div class="col-md-12 col-sm-12 col-xs-12">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					<!-- <div class="table-responsive" > -->
-						<table class="table table-hover table-bordered">
+						<table class="table table-hover table-bordered table-responsive">
 						    <thead>
 						      <tr>
 						        <th>Function</th>
@@ -65,11 +69,11 @@
 						        <td>
 						        	{{data.description}}
 						        </td>
-						        <td>
-						        	<button type="button" class="btn btn-success" aria-label="Left Align" ng-click="editFunction(data)">
+						        <td style="vertical-align: middle;">
+						        	<button type="button" class="btn btn-primary btn-xs" aria-label="Left Align" ng-click="editFunction(data)">
 						        	  <span class="glyphicon  glyphicon-pencil" aria-hidden="true"></span> Edit
 						        	</button>
-						        	<button type="button" class="btn btn-warning" aria-label="Left Align" ng-click="removeFunction(data.id, data.controller)"> 
+						        	<button type="button" class="btn btn-danger btn-xs" aria-label="Left Align" ng-click="removeFunction(data.id, data.controller)"> 
 						        	  <span class="glyphicon  glyphicon-remove" aria-hidden="true"></span> Del.
 						        	</button>
 						        </td>

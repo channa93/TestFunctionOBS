@@ -19,7 +19,7 @@ var nthParam=1;
 
 
 app.controller('clientController', function($scope, $http, $compile) {
-		
+	
 	showDefaultCtrlFunc();
 	// triger function when a controller is selected in combo
 	$scope.selectCtrl = function(ctrl){
@@ -140,6 +140,17 @@ app.controller('clientController', function($scope, $http, $compile) {
 		});		
 	}
 
+	$scope.showFormLogin = function() {
+		$('#loginFormModal').modal({backdrop: "static"});
+	}
+
+	$('#form-login').submit(function(e){
+		e.printDefault();
+		alert('submit login form');
+	});
+
+
+
 	// $('#response').jsonView(JSON.stringify(
 	//     {
  //    	    "code": 1,
@@ -168,6 +179,9 @@ app.controller('clientController', function($scope, $http, $compile) {
 	// ));
 	
 });
+
+
+
 
 
 
