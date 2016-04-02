@@ -19,6 +19,13 @@
 			</div>	
 			<!-- <a href="#"><i class="fa fa-facebook"></i></a>	 -->
 		</div> <!-- end of container ng-controller -->
+
+		<div class="footer-right" style="float: right">
+			<a href="#"><i class="fa fa-facebook"></i></a>
+			<a href="#"><i class="fa fa-twitter"></i></a>
+			<a href="#"><i class="fa fa-linkedin"></i></a>
+			<a href="#"><i class="fa fa-github"></i></a>
+		</div>	
 	</div>  <!-- end of main div container -->
 
 
@@ -26,6 +33,7 @@
 <script  src="js/jquery-1.9.1.min.js"></script>
 <script  src="js/bootstrap.min.js"></script>
 <script  src="js/angular.min.js"></script>
+<script  src="js/angular-route.min.js"></script>
 <script  src="js/jquery.json-view.min.js"></script>
 <!-- <script  src="js/my-script.js"></script> -->
 <!-- <script  src="js/utils.js"></script> 

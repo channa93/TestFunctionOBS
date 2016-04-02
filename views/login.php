@@ -29,7 +29,7 @@
               <div class="modal-footer">
                 <div class="text-center">
                   <button type="submit" class="btn btn-primary" >
-                    <span class="glyphicon  glyphicon-ok" aria-hidden="true"></span> Login </button>
+                    <span class="glyphicon  glyphicon-log-in" aria-hidden="true"></span> Login </button>
                   <button type="button" class="btn btn-danger" data-dismiss="modal">
                     <span class="glyphicon  glyphicon-remove" aria-hidden="true"></span> Cancel</button>
                 </div>

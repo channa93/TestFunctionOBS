@@ -1,22 +1,21 @@
-
-//var url = "http://192.168.1.5/CodeigniterREST_config/index.php/api;
-// var default_ctrl = "event";
-
-// var url = "http://192.168.1.244/obs/api/";
-// 	// url for get all controllers GET
-// var url_ctrls = "http://192.168.1.244/obs/admin/testFunction/TestFunction/get_ctrls";
-// 	// url for get functions depend on a controller POST
-// var url_funcs = "http://192.168.1.244/obs/admin/testFunction/TestFunction/get_funcs";
-	// url for get information of a function POST
-// var url_info_func = "http://192.168.1.244/obs/admin/testFunction/TestFunction/get_info_of_function";
-// var caret = ' <span class="caret"></span>';
-
-var app = angular.module('myApp', []);
+var app = angular.module('myApp', ['ngRoute']);
 var response="";
 	// used to suffix the param type for radio button
 var nthParam=1;
-
-
+	// //** TODO: how to route/redirect to the absolute url
+  	// config route url
+// app.config(['$routeProvider', function($routeProvider) {
+//    $routeProvider.
+   
+//    when('http://192.168.1.244/TestFunctionOBS/admin.php', {
+//       templateUrl: 'http://192.168.1.244/TestFunctionOBS/index.php', controller: 'clientController'
+//    }).
+ 
+//    otherwise({
+//       redirectTo: '192.168.1.244/TestFunctionOBS/index.php'
+//    });
+	
+// }]);
 
 app.controller('clientController', function($scope, $http, $compile) {
 	
@@ -147,6 +146,11 @@ app.controller('clientController', function($scope, $http, $compile) {
 	$('#form-login').submit(function(e){
 		e.printDefault();
 		alert('submit login form');
+	});
+
+	$('#btn-clear-response').click(function(){
+		console.log("click on clear response");
+		$('#response').html('');
 	});
 
 

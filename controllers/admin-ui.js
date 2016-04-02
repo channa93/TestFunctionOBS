@@ -205,6 +205,10 @@ app.controller('adminController', function($scope, $http, $compile) {
 		});
 	});
 
+	$('#btn-logout').click(function(){
+		alert('click button logout');
+	});
+
 	// show default controller and list of functions
 	$scope.getListFunctions('Profile');
 	$scope.getListControllers();		
