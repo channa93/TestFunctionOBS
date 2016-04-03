@@ -78,9 +78,11 @@
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">			
 					<form class="form-horizontal" role="form" id="form-param">
 					  <div class="form-group" ng-repeat="param in params">
-					    <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-4 name{{param.status}}" >{{param.name}}:</label>
+					    <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-4 name{{param.status}}" >{{param.name}}
+					    	<span ng-show="(param.status=='1')" style="color: red;">*</span>:
+					    </label> 
 					    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-					      <input type="{{param.type}}" class="form-control type{{param.status}}" placeholder="{{param.type}}" name="{{param.name}}" >
+					      <input  ng-required="(param.status=='1')" type="{{param.type}}" class="form-control type{{param.status}}" placeholder="{{param.type}}" name="{{param.name}}" >
 					    </div>
 					  </div>
 

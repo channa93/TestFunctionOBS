@@ -41,6 +41,7 @@
 		                	      <tr>
 		                	        <th>Name</th>
 		                	        <th>Type</th>
+		                	        <th>Option</th>
 		                	        <th>Remove</th>
 		                	      </tr>
 		                	    </thead>
@@ -52,6 +53,12 @@
 		                	        <td>       
 		                	        	<label class="radio-inline"><input type="radio" value="text" checked="checked" name="type-param1">text</label>
 		                	        	<label class="radio-inline"><input type="radio" value="file" name="type-param1">file</label> 	
+		                	        </td>
+		                	        <td>
+		                	        	<select name="status" class="btn btn-default">
+		                	        		<option value="0">optional</option>
+		                	        		<option value="1">required</option>
+		                	        	</select>
 		                	        </td>
 		                	        <td>
 		                	        	<button type="button" class="btn btn-danger btn-remove-param" onclick="removeParam(this)" aria-label="Left Align" ><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>

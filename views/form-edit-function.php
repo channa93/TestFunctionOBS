@@ -46,6 +46,7 @@
 		                	      <tr>
 		                	        <th>Name</th>
 		                	        <th>Type</th>
+		                	        <th>Option</th>
 		                	        <th>Remove</th>
 		                	      </tr>
 		                	    </thead>
@@ -59,7 +60,13 @@
 		                	        	<label class="radio-inline"><input type="radio" value="file"  ng-checked="(param.type == 'file')" name="param-type{{$index}}">file</label> 	
 		                	        </td>
 		                	        <td>
-		                	        	<button type="button" class="btn btn-warning btn-remove-param" onclick="removeParam(this)" aria-label="Left Align" ><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+		                	        	<select name="status" class="btn btn-default">
+		                	        		<option value="0" ng-selected="(param.status=='0')">optional</option>
+		                	        		<option value="1" ng-selected="(param.status=='1')">required</option>
+		                	        	</select>
+		                	        </td>
+		                	        <td>
+		                	        	<button type="button" class="btn btn-danger btn-remove-param" onclick="removeParam(this)" aria-label="Left Align" ><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
 		                	        </td>     				       
 		                	      </tr>
 

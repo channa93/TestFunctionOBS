@@ -17,28 +17,10 @@ pre code {
 #block_response{
 	background-color: #ec971f;
 }
-/*.dropdown-toggle {   
-    overflow: hidden;
-    padding-right: 24px 
-    text-align: left;
-    text-overflow: ellipsis;    
-    width: 100%;
-}
 
-
-.dropdown-toggle .caret {
-    position: absolute;
-    right: 12px;
-    top: calc(50% - 2px);
-}*/
 
 .dropdown-menu > li > a:hover {
     background-color: #449d44;
     background-image: none;
 }
 
-
-
-div {
-	
-}

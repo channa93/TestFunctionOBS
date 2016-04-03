@@ -52,6 +52,8 @@ app.controller('adminController', function($scope, $http, $compile) {
 			obj.params = tmpArray;
 		}
 		var data = _prepareDataAdminAddNewFunc(obj);
+		console.log(data);debugger;
+
 		var req = getObjRequest(URL_ADD_FUNC, 'POST', data);
 		
 		$http(req).then(function(response){
@@ -73,12 +75,13 @@ app.controller('adminController', function($scope, $http, $compile) {
 			params: ''  // need to find
 		};
 		var nameParam = obj.params;
-		
+		var statusParam = obj.status;
 		  //Find param type by remove property from obj except param type
 		delete obj['controller'];
 		delete obj['action'];
 		delete obj['description'];
 		delete obj['params'];
+		delete obj['status'];
 		var typeParam = obj;
 
 		// loop each key in typeParam object and create new params ,array of object, name and type as key 
@@ -89,10 +92,12 @@ app.controller('adminController', function($scope, $http, $compile) {
 		        // console.log(nameParam[i++], typeParam[property] );
 		        params.push(
 		        	{
-		        		name: nameParam[i++],
-		        		type: typeParam[property]
+		        		name: nameParam[i],
+		        		type: typeParam[property],
+		        		status: statusParam[i]
 		        	}
 		        );
+		        i++;
 		    }
 		}
 		dataPost['params'] = params;
@@ -107,6 +112,8 @@ app.controller('adminController', function($scope, $http, $compile) {
 			params: ''  // need to find
 		};
 		var nameParam = obj.params;
+		var statusParam = obj.status;
+
 		
 		  //Find param type by remove property from obj except param type
 		delete obj['controller'];
@@ -114,6 +121,7 @@ app.controller('adminController', function($scope, $http, $compile) {
 		delete obj['description'];
 		delete obj['params'];
 		delete obj['id'];
+		delete obj['status'];
 		var typeParam = obj;
 
 		// loop each key in typeParam object and create new params ,array of object, name and type as key 
@@ -124,10 +132,12 @@ app.controller('adminController', function($scope, $http, $compile) {
 		        // console.log(nameParam[i++], typeParam[property] );
 		        params.push(
 		        	{
-		        		name: nameParam[i++],
-		        		type: typeParam[property]
+		        		name: nameParam[i],
+		        		type: typeParam[property],
+		        		status: statusParam[i]
 		        	}
 		        );
+		        i++;
 		    }
 		}
 		dataPost['params'] = params;
@@ -147,7 +157,13 @@ app.controller('adminController', function($scope, $http, $compile) {
 		        	        	'<label class="radio-inline"><input type="radio" value="file" name="type-param'+nthParam+'">file</label>' + 	
 		        	        '</td>'+
 		        	        '<td>'+
-		        	        	'<button type="button" class="btn btn-warning btn-remove-param" onclick="removeParam(this)" aria-label="Left Align" ><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>'+
+		        	        	'<select name="status" class="btn btn-default">'+
+		        	        		'<option value="0">optional</option>'+
+		        	        		'<option value="1">required</option>'+
+		        	        	'</select>'+
+		        	        '</td>'+
+		        	        '<td>'+
+		        	        	'<button type="button" class="btn btn-danger btn-remove-param" onclick="removeParam(this)" aria-label="Left Align" ><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>'+
 		        	        '</td>' +     				       
 		        	      '</tr>';
 
@@ -181,6 +197,7 @@ app.controller('adminController', function($scope, $http, $compile) {
 		// alert('submit edit function');
 		var form_data = $(this).serializeArray();
 		var obj = convert_to_js_object(form_data);
+		console.log(obj);debugger;
 			// check if params is string then convert to array so that later function,_prepareDataAdminEditFunc, work properly
 		if(typeof obj.params === 'string' ){ 
 			var tmpArray = [];

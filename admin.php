@@ -62,7 +62,9 @@
 						        <td >
 							        <table>
 							        	<tr ng-repeat="param in data.params">
-							        		<td>{{param.name}}</td>
+							        		<td>{{param.name}}
+												<span ng-show="(param.status=='1')" style="color: red;">*</span>
+							        		</td>
 							        	</tr>
 							        </table>
 						        </td>
