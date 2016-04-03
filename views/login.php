@@ -12,11 +12,11 @@
           <form role="form" id="form-login">
             <div class="form-group">
               <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
-              <input type="text" class="form-control" id="usrname" placeholder="Enter email">
+              <input type="text" class="form-control" name="username" id="username" placeholder="Enter username">
             </div>
             <div class="form-group">
-              <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
-              <input type="text" class="form-control" id="psw" placeholder="Enter password">
+              <label for="password"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
+              <input type="password" class="form-control" name="password" id="password" placeholder="Enter password">
             </div>
             <div class="checkbox">
               <label><input type="checkbox" value="" checked>Remember me</label>

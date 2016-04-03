@@ -206,7 +206,8 @@ app.controller('adminController', function($scope, $http, $compile) {
 	});
 
 	$('#btn-logout').click(function(){
-		alert('click button logout');
+		console.log('click button logout');
+		window.location.href = CLIENT_URL;
 	});
 
 	// show default controller and list of functions

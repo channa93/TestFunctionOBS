@@ -12,3 +12,8 @@ const URL_EDIT_FUNC = IP_SERVER+"/obs/admin/testFunction/TestFunction/edit_funct
 const HEADERS ={
 		'Authorization': 'Basic '+btoa('admin:1234') //js use btoa('user:password')  or php use = base64encode() YWRtaW46MTIzNA==
 };
+
+const USERNAME ="admin";
+const PASSWORD ="admin";
+const CLIENT_URL =IP_SERVER+"/TestFunctionOBS/";
+const ADMIN_URL  =IP_SERVER+"/TestFunctionOBS/admin.php";

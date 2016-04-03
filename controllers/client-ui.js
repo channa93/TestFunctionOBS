@@ -144,8 +144,17 @@ app.controller('clientController', function($scope, $http, $compile) {
 	}
 
 	$('#form-login').submit(function(e){
-		e.printDefault();
-		alert('submit login form');
+		e.preventDefault();
+		var data = $(this).serializeArray();
+		var obj = convert_to_js_object(data);
+
+		if(obj.username == USERNAME && obj.password == PASSWORD){
+			console.log('username and password is correct');
+			window.location.href = ADMIN_URL;
+		}else{
+			alert('username and password is not correct');
+		}
+		
 	});
 
 	$('#btn-clear-response').click(function(){
