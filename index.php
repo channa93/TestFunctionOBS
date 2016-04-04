@@ -3,7 +3,7 @@
 			<!-- *************row1    Header -->
 			<div class="row">
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-					<nav class="navbar navbar-dark nav-bar-fixed-top bg-primary">
+					<nav class="navbar navbar-inverse nav-bar-fixed-top ">
 					    <h1 class="navbar-brand">Welcome to web client for OBS web service!</h1>
 					</nav>	
 					
@@ -62,7 +62,7 @@
 			<div class="row">
 			   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 			    <div class="input-group input-group-lg">
-			      <input type="text" class="form-control " id="url-box" placeholder="URL path here ...">
+			      <input disabled="disabled" type="text" class="form-control " id="url-box" placeholder="URL path here ...">
 			      <span class="input-group-btn">
 			        <button class="btn btn-warning btn-lg disabled" type="submit">{{method}}</button>
 			      </span>
@@ -78,8 +78,8 @@
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">			
 					<form class="form-horizontal" role="form" id="form-param">
 					  <div class="form-group" ng-repeat="param in params">
-					    <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-4 name{{param.status}}" >{{param.name}}
-					    	<span ng-show="(param.status=='1')" style="color: red;">*</span>:
+					    <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-4 name{{param.status}}" >
+					    	{{param.name}}<span ng-show="(param.status=='1')" style="color: red;">*</span>:    	
 					    </label> 
 					    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
 					      <input  ng-required="(param.status=='1')" type="{{param.type}}" class="form-control type{{param.status}}" placeholder="{{param.type}}" name="{{param.name}}" >

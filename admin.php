@@ -4,7 +4,7 @@
 			<!-- *************row1    Title -->
 			<div class="row">
 				<div class="col-md-12 col-sm-12 col-xs-12">
-					<nav class="navbar navbar-dark nav-bar-fixed-top bg-primary">
+					<nav class="navbar navbar-inverse nav-bar-fixed-top">
 					    <h1 class="navbar-brand">Welcome to admin for OBS web service!</h1>
 					</nav>	
 					<!-- Trigger the login modal with a button -->
@@ -62,9 +62,7 @@
 						        <td >
 							        <table>
 							        	<tr ng-repeat="param in data.params">
-							        		<td>{{param.name}}
-												<span ng-show="(param.status=='1')" style="color: red;">*</span>
-							        		</td>
+							        		<td><span ng-show="(param.status=='1')" style="color: red;">*</span>{{param.name}}</td>
 							        	</tr>
 							        </table>
 						        </td>
