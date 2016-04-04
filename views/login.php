@@ -9,7 +9,8 @@
           <h4 style="color:red;"><span class="glyphicon glyphicon-lock"></span> Login form</h4>
         </div>
         <div class="modal-body">
-          <form role="form" id="form-login">
+          <form role="form" id="form-login" >
+            <p class="text-warning"> <i><b> {{error_message}} </b></i> </p>
             <div class="form-group">
               <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
               <input type="text" class="form-control" name="username" id="username" placeholder="Enter username">

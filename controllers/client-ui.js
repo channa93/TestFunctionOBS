@@ -111,6 +111,8 @@ app.controller('clientController', function($scope, $http, $compile) {
 			  }
 		} );
 		e.preventDefault();
+			// 	scroll to block response div with animation
+		$("html, body").animate({ scrollTop: $("#block-response").offset().top }, 1000);
 		
 	});
 
@@ -152,6 +154,7 @@ app.controller('clientController', function($scope, $http, $compile) {
 			console.log('username and password is correct');
 			window.location.href = ADMIN_URL;
 		}else{
+			$scope.error_message = 'username and password is not correct';
 			alert('username and password is not correct');
 		}
 		
