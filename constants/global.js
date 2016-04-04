@@ -1,4 +1,5 @@
-const IP_SERVER = "http://192.168.1.244";
+//const IP_SERVER = "http://192.168.1.244"; //local
+const IP_SERVER = "http://192.168.1.146";
 const CARET = '<span class="caret"></span>';
 const URL_WEBSERVICE = IP_SERVER+"/obs/api/"; // url end point will be used later to retrieve data from web service just need controller and funtion name from select option
 const URL_FUNCS = IP_SERVER+"/obs/admin/testFunction/TestFunction/get_funcs";
