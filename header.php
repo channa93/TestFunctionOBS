@@ -6,6 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="css/client-style.css">	
 	<link rel="stylesheet" type="text/css" href="css/jquery.json-view.min.css">
 	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+	<META NAME="viewport" CONTENT="width=device-width, height=device-height, initial-scale=1, user-scalable=yes"/>
 	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">	 -->
 	<!-- <link rel="stylesheet" type="text/css" href="css/jquery.json-view.css">	 -->
 </head>
