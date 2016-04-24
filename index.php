@@ -1,4 +1,5 @@
 <?php include 'header.php'; ?>
+		<a href="#adminPage">Admin</a>
 		<div class="container" ng-controller="clientController">
 			<!-- *************row1    Header -->
 			<div class="row">
@@ -118,5 +119,8 @@
 
 				</div> <!-- end of div class="col-md-6" -->
 			</div>
+
+
+			
 					
 <?php include 'footer.php'; ?>

@@ -21,6 +21,8 @@
 		</div> <!-- end of container ng-controller -->
 	</div>  <!-- end of main div container -->
 
+	
+
 
 <script  src="constants/global.js"></script>
 <script  src="js/jquery-1.9.1.min.js"></script>
@@ -32,6 +34,7 @@
 <!-- <script  src="js/utils.js"></script> 
 <script  src="js/myapp.js"></script> -->
 
+<script  type="text/javascript" src="js/app.js"></script> 
 <script  type="text/javascript" src="controllers/utils.js"></script> 
 <script  type="text/javascript" src="controllers/client-ui.js"></script> 
 <script  type="text/javascript" src="controllers/admin-ui.js"></script> 

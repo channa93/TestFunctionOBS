@@ -1,22 +1,7 @@
-var app = angular.module('myApp', ['ngRoute']);
 var response="";
 	// used to suffix the param type for radio button
 var nthParam=1;
-	// //** TODO: how to route/redirect to the absolute url
-  	// config route url
-// app.config(['$routeProvider', function($routeProvider) {
-//    $routeProvider.
-   
-//    when('http://192.168.1.244/TestFunctionOBS/admin.php', {
-//       templateUrl: 'http://192.168.1.244/TestFunctionOBS/index.php', controller: 'clientController'
-//    }).
- 
-//    otherwise({
-//       redirectTo: '192.168.1.244/TestFunctionOBS/index.php'
-//    });
 	
-// }]);
-
 app.controller('clientController', function($scope, $http, $compile) {
 	
 	showDefaultCtrlFunc();
@@ -29,15 +14,8 @@ app.controller('clientController', function($scope, $http, $compile) {
 	} 
 
 	$scope.listFunction = function(ctrl){
-		// request object
-		var req = {
-			method: 'POST',
-			url: URL_FUNCS,
-			headers: {
-				'Authorization': 'Basic '+btoa('admin:1234') //js use btoa('user:password')  or php use = base64encode() YWRtaW46MTIzNA==
-			},
-			data: { ctrlName: ctrl }
-		};
+		// create request object from pattern in utils.js
+		var req = getObjRequest(URL_FUNCS, 'POST', {ctrlName: ctrl}); // getObjRequest(url, method, data)	
 
 		// manipulate request object
 		$http(req).then(function(response){
@@ -153,6 +131,8 @@ app.controller('clientController', function($scope, $http, $compile) {
 		if(obj.username == USERNAME && obj.password == PASSWORD){
 			console.log('username and password is correct');
 			window.location.href = ADMIN_URL;
+			// debugger;
+			// window.history.pushState("object or string", "Title", ADMIN_URL);
 		}else{
 			$scope.error_message = 'username and password is not correct';
 			alert('username and password is not correct');

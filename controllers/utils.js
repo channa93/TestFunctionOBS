@@ -12,7 +12,7 @@
 		});	
 	}
 
-	// patter for later use with $http shorthand of angularjs 
+	// pattern for later use with $http shorthand of angularjs 
 	function getObjRequest(url, method, data) {
 		return {
 			url: url,

@@ -12,7 +12,7 @@ const URL_DELETE_FUNC = IP_SERVER+"/obs/admin/testFunction/TestFunction/delete_f
 const URL_ADD_FUNC = IP_SERVER+"/obs/admin/testFunction/TestFunction/add_function";
 const URL_EDIT_FUNC = IP_SERVER+"/obs/admin/testFunction/TestFunction/edit_function";
 const HEADERS ={
-		'Authorization': 'Basic '+btoa('admin:1234') //js use btoa('user:password')  or php use = base64encode() YWRtaW46MTIzNA==
+	'Authorization': 'Basic '+btoa('admin:1234') //js use btoa('user:password')  or php use = base64encode() YWRtaW46MTIzNA==
 };
 
 const USERNAME ="admin";
