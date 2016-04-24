@@ -1,8 +1,11 @@
+
 var response="";
 	// used to suffix the param type for radio button
 var nthParam=1;
-	
-app.controller('clientController', function($scope, $http, $compile) {
+	// //** TODO: how to route/redirect to the absolute url
+  	// config route url
+
+app.controller('clientController', function($scope, $http, $compile, $location) {
 	
 	showDefaultCtrlFunc();
 	// triger function when a controller is selected in combo
@@ -14,8 +17,15 @@ app.controller('clientController', function($scope, $http, $compile) {
 	} 
 
 	$scope.listFunction = function(ctrl){
-		// create request object from pattern in utils.js
-		var req = getObjRequest(URL_FUNCS, 'POST', {ctrlName: ctrl}); // getObjRequest(url, method, data)	
+		// request object
+		var req = {
+			method: 'POST',
+			url: URL_FUNCS,
+			headers: {
+				'Authorization': 'Basic '+btoa('admin:1234') //js use btoa('user:password')  or php use = base64encode() YWRtaW46MTIzNA==
+			},
+			data: { ctrlName: ctrl }
+		};
 
 		// manipulate request object
 		$http(req).then(function(response){
@@ -130,9 +140,9 @@ app.controller('clientController', function($scope, $http, $compile) {
 
 		if(obj.username == USERNAME && obj.password == PASSWORD){
 			console.log('username and password is correct');
-			window.location.href = ADMIN_URL;
-			// debugger;
-			// window.history.pushState("object or string", "Title", ADMIN_URL);
+			//window.location.href = ADMIN_URL;  // this will refresh browser and error file not found if we access with route config that not the path of file location (file not found on wamp)
+			$location.path('/adminPage');  // no page refresh, use route url config with template admin page
+			$('#title-header').text("Welcome to admin page for OBS web service!")
 		}else{
 			$scope.error_message = 'username and password is not correct';
 			alert('username and password is not correct');
@@ -173,9 +183,18 @@ app.controller('clientController', function($scope, $http, $compile) {
  //    	    }
  //    	}
 	// ));
-	
+
+	// $scope.hideToolWrapper = function(){
+	// 	alert('hide toolWrapper');
+	// 	$('#toolWrapper').hide();
+	// }
 });
 
+
+function hideToolWrapper () {
+	alert('hide toolWrapper');
+	$('#toolWrapper').hide();
+}
 
 
 

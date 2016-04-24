@@ -1,22 +1,23 @@
 var app = angular.module('myApp', ['ngRoute']);
-app.config(['$routeProvider', function($routeProvider) {
+app.config(['$routeProvider','$locationProvider', function($routeProvider,$locationProvider) {
+   $locationProvider.html5Mode(true);
    $routeProvider.
    
-      // route for the about page
+   // route for the about page
     when('/', {
-        templateUrl : 'index.php',
+        templateUrl : 'views/home.php',
         controller  : 'clientController'
     }).
-    when('/adminPage', {
-      	templateUrl: 'admin.php', 
-      	controller: 'clientController'
-    })
+   when('/adminPage', {
+        templateUrl: 'views/admin.php', 
+        controller: 'adminController'
+   }).
  
-   // .otherwise({
-   //    redirectTo: '/'
-   // });
+   otherwise({
+      redirectTo: '/'
+   });
 
    
-	
+  
 }]);
 

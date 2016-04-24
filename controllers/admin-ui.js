@@ -1,4 +1,4 @@
-app.controller('adminController', function($scope, $http, $compile) {
+app.controller('adminController', function($scope, $http, $compile, $location) {
 	
 	$scope.getListFunctions = function(ctrlName) {	
 		var req = getObjRequest(URL_FUNCS, 'POST', {ctrlName: ctrlName});
@@ -224,7 +224,8 @@ app.controller('adminController', function($scope, $http, $compile) {
 
 	$('#btn-logout').click(function(){
 		console.log('click button logout');
-		window.location.href = CLIENT_URL;
+		window.location.href = CLIENT_URL; // this will refresh page
+		// $location.path(CLIENT_URL); this will not refresh page but it does not work. DOn't know why
 	});
 
 	// show default controller and list of functions
