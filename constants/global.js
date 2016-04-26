@@ -21,6 +21,5 @@ const URL_ADMIN = IP_SERVER+"/obs/admin/testFunction/Admin/login";
 const USERNAME ="admin";
 const PASSWORD ="admin";
 const ACCESSKEY = "NTcxZGRmYjMyNTE4MGViYzBkMDAwMDI5MjAxNi0wNC0yNSAxNjowNDoyM09ubGluZV9CaWRkaW5nX1N5c3RlbQ==";
-const HASH_PASSWORD = Crypto.MD5(PASSWORD);
 const CLIENT_URL =IP_SERVER+"/TestFunctionOBS/";
 const ADMIN_URL  =IP_SERVER+"/TestFunctionOBS/admin.php";
