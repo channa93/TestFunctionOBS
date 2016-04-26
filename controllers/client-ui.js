@@ -117,6 +117,7 @@ app.controller('clientController', function($scope, $http, $compile, $location) 
 		
 		// process request
 		$http(req).then(function(response){	
+			console.log('ShowDefaultCtrlFunc response:',response);
 			  // convert to string and display to repsone block
 	        // $('#response').html(JSON.stringify(response, null,3)); // JSON.stringify(data,replacer,space)
 	        $('#response').jsonView(JSON.stringify(response.data, null,3)); // JSON.stringify(data,replacer,space)
@@ -138,15 +139,26 @@ app.controller('clientController', function($scope, $http, $compile, $location) 
 		var data = $(this).serializeArray();
 		var obj = convert_to_js_object(data);
 
-		if(obj.username == USERNAME && obj.password == PASSWORD){
-			console.log('username and password is correct');
-			//window.location.href = ADMIN_URL;  // this will refresh browser and error file not found if we access with route config that not the path of file location (file not found on wamp)
-			$location.path('/adminPage');  // no page refresh, use route url config with template admin page
-			$('#title-header').text("Welcome to admin page for OBS web service!")
-		}else{
-			$scope.error_message = 'username and password is not correct';
-			alert('username and password is not correct');
-		}
+		var req = getObjRequest(URL_ADMIN, 'POST', {accessKey:ACCESSKEY, username:obj.username, password:obj.password}); // getObjRequest(url, method, data)
+		
+		// process request object
+		$http(req).then(function(response){
+			if(response.data['code']==1){	
+				console.log('username and password is correct');
+				//window.location.href = ADMIN_URL;  // this will refresh browser and error file not found if we access with route config that not the path of file location (file not found on wamp)
+				//$('body').removeAttr('style');
+				$('body').css("overflow","scroll");  // adding scroll bar to body for when we render template 
+				$location.path('/adminPage');  // no page refresh, use route url config with template admin page
+				$('#title-header').text("Welcome to admin page for OBS web service!")
+			}else{
+				$scope.error_message = 'username and password is not correct';
+				alert('username and password is not correct');
+			}
+			
+		}, function(error){
+			console.log(error);
+		});
+		
 		
 	});
 

@@ -11,6 +11,7 @@
 		<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">	 -->
 		<!-- <link rel="stylesheet" type="text/css" href="css/jquery.json-view.css">	 -->
 		<base href="http://localhost/TestFunctionOBS/"></base>
+		<!-- <base href="/"></base> -->
 	</head>
 	<body ng-app="myApp" >
 		<div class="container">
@@ -19,6 +20,7 @@
 			</div>
 
 			<div id="main">
+				<!-- <a href="/TestFunction/adminPage">Admin</a> -->
 				<div ng-view></div>
 			</div>
 			<div id="footer" class="row">
@@ -40,6 +42,7 @@
 		<script  type="text/javascript" src="controllers/utils.js"></script> 
 		<script  type="text/javascript" src="controllers/client-ui.js"></script> 
 		<script  type="text/javascript" src="controllers/admin-ui.js"></script> 
+		 
 		 
 	</body>
 </html>

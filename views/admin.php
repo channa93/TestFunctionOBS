@@ -15,7 +15,7 @@
 	<button type="button" class="btn btn-default btn-md" id="btn-logout" style="position: relative;float: right;">
 		<span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> logout
 	</button>
-	<!-- <a type="button" class="btn btn-default btn-md" id="btn-logout" style="position: relative;float: right;" href="/">
+	<!-- <a type="button" class="btn btn-default btn-md" id="btn-logout" style="position: relative;float: right;" href="/TestFunctionOBS">
 		<span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> logout
 	</a> -->
 
@@ -27,7 +27,7 @@
 			    {{ctrl}} <span class="caret"></span>
 			  </button>
 			  <ul class="dropdown-menu" >
-			    <li ng-repeat="data in listControllers"><a href="#" class="ctrl" ng-click="selectControler(data.controller)">{{data.controller}}</a></li>
+			    <li ng-repeat="controller in listControllers"><a href="#" class="ctrl" ng-click="selectControler(controller)">{{controller}}</a></li>
 			  </ul>
 			</div> 
 		</div>

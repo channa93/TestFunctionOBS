@@ -10,7 +10,7 @@
 			    {{ctrl}} <span class="caret"></span>
 			  </button>
 			  <ul class="dropdown-menu" >
-			    <li ng-repeat="data in controllers"><a href="#" class="ctrl" ng-click="selectCtrl(data.controller)">{{data.controller}}</a></li>
+			    <li ng-repeat="controller in controllers"><a href="#" class="ctrl" ng-click="selectCtrl(controller)">{{controller}}</a></li>
 			  </ul>
 			</div> 
 		</div>
