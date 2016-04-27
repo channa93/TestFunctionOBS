@@ -23,3 +23,11 @@ app.config(['$routeProvider','$locationProvider', function($routeProvider,$locat
 
 }]);
 
+
+// overide base url to place where this project is placed in
+$(document).ready(function(){
+    $("#base-url").attr("href", CLIENT_URL);
+});
+
+
+

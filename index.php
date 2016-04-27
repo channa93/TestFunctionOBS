@@ -10,8 +10,7 @@
 		<META NAME="viewport" CONTENT="width=device-width, height=device-height, initial-scale=1, user-scalable=yes"/>
 		<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">	 -->
 		<!-- <link rel="stylesheet" type="text/css" href="css/jquery.json-view.css">	 -->
-		<base href="http://localhost/TestFunctionOBS/"></base>
-		<!-- <base href="/"></base> -->
+		<base id="base-url" href="http://localhost/TestFunctionOBS/"></base> <!-- temporary href. See in app.js to overide it -->
 	</head>
 	<body ng-app="myApp" >
 		<div class="container">
