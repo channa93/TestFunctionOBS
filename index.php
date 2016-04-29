@@ -6,6 +6,7 @@
 		<link rel="stylesheet" type="text/css" href="css/client-style.css">	
 		<link rel="stylesheet" type="text/css" href="css/jquery.json-view.min.css">
 		<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="css/mystyle.css">
 		<!-- add meta tag to proper rendering in small device -->
 		<META NAME="viewport" CONTENT="width=device-width, height=device-height, initial-scale=1, user-scalable=yes"/>
 		<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">	 -->
@@ -13,15 +14,13 @@
 		<base id="base-url" href="/TestFunctionOBS/"</base> <!-- use base tag for html5mode to remove # form url  -->
 	</head>
 	<body ng-app="myApp" >
-		<div class="container">
+		<div class="container" id="wrap">
 			<div id="header" class="row">
 				<?php include 'views/header.php'; ?>
 			</div>
 
-			<div id="main">
-				<!-- <a href="/TestFunction/adminPage">Admin</a> -->
-				<div ng-view></div>
-			</div>
+			<div ng-view id="main"></div>
+			
 			<div id="footer" class="row">
 				<?php include 'views/footer.php'; ?>
 			</div>

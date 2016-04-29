@@ -1,5 +1,6 @@
+
 app.controller('adminController', function($scope, $http, $compile, $location) {
-	
+	$scope.data_delete={};  // store data to be deletet when click delete
 	$scope.getListFunctions = function(ctrlName) {	
 		var req = getObjRequest(URL_FUNCS, 'POST', {ctrlName: ctrlName});
 		// manipulate request object
@@ -176,7 +177,17 @@ app.controller('adminController', function($scope, $http, $compile, $location) {
 		console.log(nthParam,param_input);
 	}
 
-	$scope.removeFunction = function(id, ctrlName) {
+	
+	$scope.clickDelete = function(data){
+		$scope.data_delete = data; // store data to scope for later use
+		$('#confirmDeleteModal').modal({backdrop: "static"});
+	}
+
+	$scope.removeFunction = function() {
+		// get id and controller from scope variable saved from $scope.clickDelete
+		id = $scope.data_delete.id;  
+		ctrlName = $scope.data_delete.controller;
+
 		var req = getObjRequest(URL_DELETE_FUNC, 'POST', {id:id});
 		$http(req).then(function(response){
 			// refresh List Functions;
@@ -187,6 +198,17 @@ app.controller('adminController', function($scope, $http, $compile, $location) {
 		});
 
 	}
+	// $scope.removeFunction = function(id, ctrlName) {
+	// 	var req = getObjRequest(URL_DELETE_FUNC, 'POST', {id:id});
+	// 	$http(req).then(function(response){
+	// 		// refresh List Functions;
+	// 		$scope.getListFunctions(ctrlName);
+
+	// 	},function(error){
+	// 		console.log(error);
+	// 	});
+
+	// }
 
 	$scope.editFunction = function(data) {
 		$scope.dataEdit = data;

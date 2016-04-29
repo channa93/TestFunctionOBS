@@ -1,4 +1,4 @@
-<div class="container" ng-controller="adminController">
+<div ng-controller="adminController" style="margin: inherit;">
 	<!-- *************row1    Title -->
 	<!-- <div class="row">
 		<div class="col-md-12 col-sm-12 col-xs-12">
@@ -48,6 +48,16 @@
 	</div>  <!-- end of row2 -->
 
 	<!-- *************row3     Function, table list -->
+	<div class="row">
+		<div class="col-lg-4">
+	        <div class="input-group">
+	            <input type="text" class="form-control" placeholder="Search ..." ng-model="keyword">
+	            <div class="input-group-btn">
+	                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+	            </div>
+	        </div>
+		</div>
+	</div>
 	<div class="row" >
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 			<!-- <div class="table-responsive" > -->
@@ -61,7 +71,7 @@
 				      </tr>
 				    </thead>
 				    <tbody>
-				      <tr ng-repeat="data in dataList">
+				      <tr ng-repeat="data in dataList | filter:{action:keyword}">  <!-- 2 ways binding  -->
 				        
 				        <td> <input type="hidden" name="id" value="{{data.id}}"> {{data.action}}</td>
 				        <td >
@@ -78,19 +88,20 @@
 				        	<button type="button" class="btn btn-primary btn-xs" aria-label="Left Align" ng-click="editFunction(data)">
 				        	  <span class="glyphicon  glyphicon-pencil" aria-hidden="true"></span> Edit
 				        	</button>
-				        	<button type="button" class="btn btn-danger btn-xs" aria-label="Left Align" ng-click="removeFunction(data.id, data.controller)"> 
+				        	<button type="button" class="btn btn-danger btn-xs" aria-label="Left Align" ng-click="clickDelete(data)"> <!-- ng-click="confirmRemoveFunction(data.id, data.controller)" -->
 				        	  <span class="glyphicon  glyphicon-remove" aria-hidden="true"></span> Del.
 				        	</button>
-				        </td>
-				        
-				        
+				        </td>        
 				      </tr>
 
 				    </tbody>
 				  </table>
+				  <!-- 	Modal form pop up for confirm delete function is here -->
+				  <?php include 'confirm-delete.php'; ?>
 
 				  <!-- 	Modal form pop up for edit function is here -->
 				  <?php include 'form-edit-function.php'; ?>
+
 
 		</div>	
 	</div> <!-- end of row -->

@@ -1,4 +1,4 @@
-<div class="container" ng-controller="clientController">
+<div ng-controller="clientController" style="margin: inherit;">
 	<!-- *************row2   Controller, Function, Method combo list -->
 	<div class="row" >
 		<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
