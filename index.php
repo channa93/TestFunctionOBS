@@ -8,6 +8,7 @@
 		<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
 		<link rel="stylesheet" type="text/css" href="css/mystyle.css">
 		<link rel="stylesheet" type="text/css" href="css/loading-bar.css">
+		<link rel="stylesheet" type="text/css" href="css/pace.css">
 
 		<!-- add meta tag to proper rendering in small device -->
 		<META NAME="viewport" CONTENT="width=device-width, height=device-height, initial-scale=1, user-scalable=yes"/>
@@ -39,7 +40,8 @@
 		<script  src="js/myapp.js"></script> -->
 
 		<script  type="text/javascript" src="js/app.js"></script> 
-		<script  type="text/javascript" src="js/loading-bar.js"></script> 
+		<script  type="text/javascript" src="js/loading-bar.js"></script> <!-- auto progress loading when http request in angular service -->
+		<script  type="text/javascript" src="js/pace.min.js"></script> <!-- auto progress loading when ajax request -->
 		<script  type="text/javascript" src="controllers/utils.js"></script> 
 		<script  type="text/javascript" src="controllers/client-ui.js"></script> 
 		<script  type="text/javascript" src="controllers/admin-ui.js"></script> 

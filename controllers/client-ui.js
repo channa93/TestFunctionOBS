@@ -88,6 +88,7 @@ app.controller('clientController', function($scope, $http, $compile, $location) 
 			  processData: false,
 			  contentType: false,
 			  success: function (response) {
+
 			   	console.log(response);	
 			  	$('#response').jsonView(JSON.stringify(response, null,3));  //output response  	
 			  	if(response['code']==0)	alert(response.message['description']);	  	
@@ -101,6 +102,7 @@ app.controller('clientController', function($scope, $http, $compile, $location) 
 		e.preventDefault();
 			// 	scroll to block response div with animation
 		$("html, body").animate({ scrollTop: $("#block-response").offset().top }, 1000);
+			
 		
 	});
 
