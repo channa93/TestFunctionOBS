@@ -7,6 +7,8 @@
 		<link rel="stylesheet" type="text/css" href="css/jquery.json-view.min.css">
 		<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
 		<link rel="stylesheet" type="text/css" href="css/mystyle.css">
+		<link rel="stylesheet" type="text/css" href="css/loading-bar.css">
+
 		<!-- add meta tag to proper rendering in small device -->
 		<META NAME="viewport" CONTENT="width=device-width, height=device-height, initial-scale=1, user-scalable=yes"/>
 		<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">	 -->
@@ -21,7 +23,7 @@
 
 			<div ng-view id="main"></div>
 			
-			<div id="footer" class="row">
+			<div id="footer" class="row" style="height:400dp;">
 				<?php include 'views/footer.php'; ?>
 			</div>
 		</div>
@@ -37,6 +39,7 @@
 		<script  src="js/myapp.js"></script> -->
 
 		<script  type="text/javascript" src="js/app.js"></script> 
+		<script  type="text/javascript" src="js/loading-bar.js"></script> 
 		<script  type="text/javascript" src="controllers/utils.js"></script> 
 		<script  type="text/javascript" src="controllers/client-ui.js"></script> 
 		<script  type="text/javascript" src="controllers/admin-ui.js"></script> 

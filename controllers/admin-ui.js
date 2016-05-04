@@ -35,6 +35,7 @@ app.controller('adminController', function($scope, $http, $compile, $location) {
 	}
 
 	$scope.selectControler = function(ctrlName) {
+		debugger;
 		$scope.ctrl = ctrlName;
 		$scope.getListFunctions(ctrlName);
 

@@ -1,4 +1,4 @@
-var app = angular.module('myApp', ['ngRoute']);
+var app = angular.module('myApp', ['ngRoute','angular-loading-bar']);
 app.config(['$routeProvider','$locationProvider', function($routeProvider,$locationProvider) {
    // $locationProvider.html5Mode(true);
    $locationProvider.html5Mode({

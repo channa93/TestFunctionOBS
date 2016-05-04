@@ -17,3 +17,8 @@ html, body {
   clear:both;
   padding-top:20px;
 }
+
+
+.navbar {
+    height: 100px; /* Whatever you want. */
+}
